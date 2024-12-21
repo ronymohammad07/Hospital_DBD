@@ -1,0 +1,69 @@
+===Database hospital db desing
+
+== Table structure for table appointments
+
+|------
+|Column|Type|Null|Default
+|------
+|//**AppointmentID**//|int(11)|No|
+|Date|date|No|
+|Time|time|No|
+|Status|varchar(20)|Yes|NULL
+|DoctorID|int(11)|Yes|NULL
+|PatientID|int(11)|Yes|NULL
+== Dumping data for table appointments
+
+|1|2024-12-22|09:00:00|Confirmed|1|1
+|2|2024-12-23|10:30:00|Pending|2|2
+|3|2024-12-24|11:00:00|Cancelled|3|3
+|4|2024-12-25|14:00:00|Confirmed|4|4
+|5|2024-12-26|16:00:00|Pending|5|5
+== Table structure for table departments
+
+|------
+|Column|Type|Null|Default
+|------
+|//**DepartmentID**//|int(11)|No|
+|Name|varchar(100)|No|
+|Location|varchar(100)|Yes|NULL
+== Dumping data for table departments
+
+|1|Cardiology|First Floor
+|2|Orthopedics|Second Floor
+|3|Neurology|Third Floor
+|4|Pediatrics|Fourth Floor
+|5|Radiology|Ground Floor
+== Table structure for table doctors
+
+|------
+|Column|Type|Null|Default
+|------
+|//**DoctorID**//|int(11)|No|
+|Name|varchar(100)|No|
+|Specialization|varchar(100)|Yes|NULL
+|Phone|varchar(15)|Yes|NULL
+|DepartmentID|int(11)|Yes|NULL
+== Dumping data for table doctors
+
+|1|Dr. John Doe|Cardiologist|1234567890|1
+|2|Dr. Jane Smith|Orthopedic|2345678901|2
+|3|Dr. Alice Brown|Neurologist|3456789012|3
+|4|Dr. Bob White|Pediatrician|4567890123|4
+|5|Dr. Emily Davis|Radiologist|5678901234|5
+== Table structure for table patients
+
+|------
+|Column|Type|Null|Default
+|------
+|//**PatientID**//|int(11)|No|
+|Name|varchar(100)|No|
+|Age|int(11)|Yes|NULL
+|Gender|varchar(10)|Yes|NULL
+|Phone|varchar(15)|Yes|NULL
+== Dumping data for table patients
+
+|1|Alice Johnson|30|Female|9876543210
+|2|Bob Brown|45|Male|8765432109
+|3|Charlie Smith|25|Male|7654321098
+|4|Diana Green|50|Female|6543210987
+|5|Ethan White|35|Male|5432109876

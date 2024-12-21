@@ -1,0 +1,69 @@
+-- Creating the Departments table
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100) NOT NULL,
+    Location VARCHAR(100)
+);
+
+-- Creating the Doctors table
+CREATE TABLE Doctors (
+    DoctorID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100) NOT NULL,
+    Specialization VARCHAR(100),
+    Phone VARCHAR(15),
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+
+-- Creating the Patients table
+CREATE TABLE Patients (
+    PatientID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100) NOT NULL,
+    Age INT,
+    Gender VARCHAR(10),
+    Phone VARCHAR(15)
+);
+
+-- Creating the Appointments table
+CREATE TABLE Appointments (
+    AppointmentID INT PRIMARY KEY AUTO_INCREMENT,
+    Date DATE NOT NULL,
+    Time TIME NOT NULL,
+    Status VARCHAR(20),
+    DoctorID INT,
+    PatientID INT,
+    FOREIGN KEY (DoctorID) REFERENCES Doctors(DoctorID),
+    FOREIGN KEY (PatientID) REFERENCES Patients(PatientID)
+);
+
+-- Inserting dummy data into Departments
+INSERT INTO Departments (Name, Location) VALUES
+('Cardiology', 'First Floor'),
+('Orthopedics', 'Second Floor'),
+('Neurology', 'Third Floor'),
+('Pediatrics', 'Fourth Floor'),
+('Radiology', 'Ground Floor');
+
+-- Inserting dummy data into Doctors
+INSERT INTO Doctors (Name, Specialization, Phone, DepartmentID) VALUES
+('Dr. John Doe', 'Cardiologist', '1234567890', 1),
+('Dr. Jane Smith', 'Orthopedic', '2345678901', 2),
+('Dr. Alice Brown', 'Neurologist', '3456789012', 3),
+('Dr. Bob White', 'Pediatrician', '4567890123', 4),
+('Dr. Emily Davis', 'Radiologist', '5678901234', 5);
+
+-- Inserting dummy data into Patients
+INSERT INTO Patients (Name, Age, Gender, Phone) VALUES
+('Alice Johnson', 30, 'Female', '9876543210'),
+('Bob Brown', 45, 'Male', '8765432109'),
+('Charlie Smith', 25, 'Male', '7654321098'),
+('Diana Green', 50, 'Female', '6543210987'),
+('Ethan White', 35, 'Male', '5432109876');
+
+-- Inserting dummy data into Appointments
+INSERT INTO Appointments (Date, Time, Status, DoctorID, PatientID) VALUES
+('2024-12-22', '09:00:00', 'Confirmed', 1, 1),
+('2024-12-23', '10:30:00', 'Pending', 2, 2),
+('2024-12-24', '11:00:00', 'Cancelled', 3, 3),
+('2024-12-25', '14:00:00', 'Confirmed', 4, 4),
+('2024-12-26', '16:00:00', 'Pending', 5, 5);
